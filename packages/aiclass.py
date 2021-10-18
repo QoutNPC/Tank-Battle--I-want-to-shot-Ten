@@ -42,7 +42,7 @@ class GameAI():
         self.__ifover = 0
 
         # 随机生成60个坐标
-        coords = coordclass.gen_coord()
+        coords = coordclass.gen_coord(60)
 
         # 己方坦克初始化
         self.tank_player = tankclass.Tank('files/坦克1素材.png')
