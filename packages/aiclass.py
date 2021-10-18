@@ -22,15 +22,15 @@ WIN_SIZE = (640, 480)
 class GameAI():
     __obj = None  # 单态
     tank_player = None
-    play_input_ori = None   # 玩家方向指令
+    play_input_ori = None  # 玩家方向指令
     tanks_ai = None
-    tick_ai_op = None   # 敌方坦克行动计时
+    tick_ai_op = None  # 敌方坦克行动计时
     tick_ai_fire = None  # 敌方坦克开火计时
     ori_ords = None
     fire_ords = None
     bullets = None
     bricks = None
-    __ifover = None   # 游戏是否结束 0-未结束 1-玩家赢 2-电脑赢
+    __ifover = None  # 游戏是否结束 0-未结束 1-玩家赢 2-电脑赢
 
     def __new__(cls, *args, **kwargs):
         if not cls.__obj:
@@ -74,28 +74,30 @@ class GameAI():
         """
         获取玩家控制指令
         """
-        if key == pygame.K_UP:
+        if key == pygame.K_UP or key == pygame.K_w:
             self.tank_player.start()
             self.play_input_ori = tankclass.UP
 
-        elif key == pygame.K_DOWN:
+        elif key == pygame.K_DOWN or key == pygame.K_s:
             self.tank_player.start()
             self.play_input_ori = tankclass.DOWN
 
-        elif key == pygame.K_LEFT:
+        elif key == pygame.K_LEFT or key == pygame.K_a:
             self.tank_player.start()
             self.play_input_ori = tankclass.LEFT
 
-        elif key == pygame.K_RIGHT:
+        elif key == pygame.K_RIGHT or key == pygame.K_d:
             self.tank_player.start()
             self.play_input_ori = tankclass.RIGHT
 
-        elif key == pygame.K_SPACE:
+        elif key == pygame.K_SPACE or key == pygame.K_RETURN:
             self.tank_player.fire(self.bullets)
 
     def playinput_keyup(self, key):
         if key == pygame.K_UP or key == pygame.K_DOWN or \
-                key == pygame.K_LEFT or key == pygame.K_RIGHT:
+                key == pygame.K_LEFT or key == pygame.K_RIGHT or \
+                key == pygame.K_w or key == pygame.K_s or \
+                key == pygame.K_a or key == pygame.K_d:
             self.tank_player.stop()
 
     def update(self, window):
@@ -140,4 +142,3 @@ class GameAI():
             self.__ifover = 1
 
         return self.__ifover
-
