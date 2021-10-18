@@ -107,5 +107,6 @@ class Bullets():
                 for tk in tanks_ai:
                     if i.check_hit_tank(self.bullet_size, tk):
                         self.bulletslist.remove(i)
+                        break
 
         self.__draw(window)
