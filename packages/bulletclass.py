@@ -4,7 +4,7 @@
 @time: 2021-10-13
 @file: bulletclass.py
 @function: 
-@modify: 
+@modify: 2021-10-18修改update函数，修复子弹可同时判定的bug
 """
 
 import pygame
@@ -58,6 +58,7 @@ class OneBullet():
             return True
         return False
 
+
 class Bullets():
     __obj = None  # 单态
     bullet_img = None
@@ -96,10 +97,10 @@ class Bullets():
             if not i.move(self.bullet_size):
                 self.bulletslist.remove(i)
 
-            if i.check_hit_bricks(self.bullet_size, bricks):
+            elif i.check_hit_bricks(self.bullet_size, bricks):
                 self.bulletslist.remove(i)
 
-            if i.check_hit_tank(self.bullet_size, tank_player):
+            elif i.check_hit_tank(self.bullet_size, tank_player):
                 self.bulletslist.remove(i)
 
             for tk in tanks_ai:
