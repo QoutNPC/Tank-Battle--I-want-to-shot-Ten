@@ -4,7 +4,7 @@
 @time: 2021-10-13
 @file: aiclass.py
 @function: 
-@modify: 
+@modify: 2021-10-18更新按键控制，新增wsad及回车键控制
 """
 
 import pygame
