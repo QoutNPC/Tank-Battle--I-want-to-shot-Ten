@@ -10,8 +10,8 @@
 import random
 
 
-def gen_coord():
-    xyseq = random.sample(range(0, 18 * 14), 60)
+def gen_coord(num=60):
+    xyseq = random.sample(range(0, 18 * 14), num)
     coords = []
     for i in xyseq:
         y = i // 18
