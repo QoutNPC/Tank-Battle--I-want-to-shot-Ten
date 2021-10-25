@@ -11,13 +11,13 @@ import random
 
 
 def gen_coord(num=60):
-    xyseq = random.sample(range(0, 18 * 14), num)
+    xyseq = random.sample(range(0, 20 * 15), num)
     coords = []
     for i in xyseq:
-        y = i // 18
-        x = i - 18 * y
-        y *= 34
-        x *= 34
+        y = i // 20
+        x = i - 20 * y
+        y *= 32
+        x *= 32
         coords.append([x, y])
     return coords
 

@@ -4,12 +4,11 @@
 @time: 2021-10-13
 @file: tankclass.py
 @function: 
-@modify: 
+@modify: 2021-10-25 调整坦克图像尺寸至28*28
 """
 
 import pygame
 from . import bulletclass
-from . import brickclass
 
 UP = 0
 DOWN = 1
@@ -37,6 +36,12 @@ class Tank():
         self.tank_img_down = pygame.transform.rotozoom(self.tank_img_up, 180, 1)
         self.tank_img_left = pygame.transform.rotozoom(self.tank_img_up, 90, 1)
         self.tank_img_right = pygame.transform.rotozoom(self.tank_img_up, 270, 1)
+
+        self.tank_img_up = pygame.transform.scale(self.tank_img_up, (28, 28))
+        self.tank_img_down = pygame.transform.scale(self.tank_img_down, (28, 28))
+        self.tank_img_left = pygame.transform.scale(self.tank_img_left, (28, 28))
+        self.tank_img_right = pygame.transform.scale(self.tank_img_right, (28, 28))
+
         self.tank_size = self.tank_img_up.get_size()
 
     def __wipe(self, window):
@@ -45,7 +50,7 @@ class Tank():
         """
         pygame.draw.rect(window, (0, 0, 0),
                          (self.tank_pos[0], self.tank_pos[1],
-                          self.tank_size[0] + 3, self.tank_size[1] + 3))
+                          self.tank_size[0] + 2, self.tank_size[1] + 2))
 
     def set_origin(self, window, coord):
         """
@@ -158,6 +163,7 @@ class Tank():
                 window.blit(self.tank_img_right, self.tank_pos)
 
             boom_img = pygame.image.load('files/爆炸效果素材.png')
+            boom_img = pygame.transform.scale(boom_img, self.tank_size)
             window.blit(boom_img, self.tank_pos)
         elif self.__shotcount < 15:
             self.__shotcount += 1
@@ -208,4 +214,3 @@ class Tank():
     def update(self, window):
         if self.__ifshot:
             self.__draw_shot(window)
-

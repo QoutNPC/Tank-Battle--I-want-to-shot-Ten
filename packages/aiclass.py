@@ -41,8 +41,8 @@ class GameAI():
         # 参数初始化
         self.__ifover = 0
 
-        # 随机生成60个坐标
-        coords = coordclass.gen_coord(60)
+        # 随机生成N个坐标
+        coords = coordclass.gen_coord(1 + 30 + 50)
 
         # 己方坦克初始化
         self.tank_player = tankclass.Tank('files/坦克1素材.png')
@@ -50,19 +50,19 @@ class GameAI():
 
         # 电脑坦克初始化
         self.tanks_ai = []
-        for i in range(10):
+        for i in range(30):
             tobj = tankclass.Tank('files/坦克2素材.png')
             tobj.set_origin(window, coords.pop())
             tobj.start()
             self.tanks_ai.append(tobj)
         self.tick_ai_op = time.perf_counter()
         self.tick_ai_fire = time.perf_counter()
-        self.ori_ords = coordclass.gen_ori_ords(10)
-        self.fire_ords = coordclass.gen_fire_ords(10)
+        self.ori_ords = coordclass.gen_ori_ords(30)
+        self.fire_ords = coordclass.gen_fire_ords(30)
 
         # 砖墙初始化
         self.bricks = brickclass.Bricks('files/砖墙素材1.png', 'files/砖墙素材2.png')
-        for i in range(49):
+        for i in range(50):
             bobj = brickclass.OneBrick(coords.pop())
             self.bricks.add_brick(bobj)
         self.bricks.update(window)
