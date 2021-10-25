@@ -19,7 +19,7 @@ class Main():
         pygame.init()
         window = pygame.display.set_mode(WIN_SIZE)
         icon = pygame.image.load('files/坦克1素材.png')
-        pygame.display.set_caption('  坦克大战——我要打十个  ')
+        pygame.display.set_caption('  坦克大战——我要打30个  ')
         pygame.display.set_icon(icon)
         pygame.display.flip()
 
